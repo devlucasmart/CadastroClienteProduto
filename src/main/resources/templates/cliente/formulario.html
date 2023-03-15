@@ -9,7 +9,7 @@
         <h1>Dados do Cliente</h1>
         <hr>
         <form th:action"@{/clientes}" th:objetc=${cliente} method="POST">
-            <input id="ativo" type="hidden" th:field="*{id}">
+
             <div>
                 <label for="ativo">Registro Ativo</label>
                 <input id="ativo" type="checkbox" th:field="*{ativo}">

@@ -48,10 +48,12 @@ public class ClienteServiceTest {
     @Order(3)
     public void atualiza(){
         Cliente cliente = clienteService.pesquisaPeloId(3L);
+        cliente.setNome(null);
         cliente.setCpf(null);
+        cliente.setDataDeNascimmento(null);
+        cliente.getSexo(null);
         cliente.setTelefone(null);
         cliente.setCelular(null);
-        cliente.setDataDeNascimmento(null);
         clienteService.atualiza(cliente);
     }
     @Test
@@ -62,17 +64,17 @@ public class ClienteServiceTest {
             System.out.println(cliente);
         }
     }
-    /*@Test
+    @Test
     @Order(5)
     public void inativa(Cliente cliente) {
         cliente.setAtivo(false);
-        clienteBO.atualiza(cliente);
+        clienteService.atualiza(cliente);
     }
 
     @Test
     @Order(6)
     public void remove(Cliente cliente) {
-        clienteBO.remove(cliente);
-    }*/
+        clienteService.remove(cliente);
+    }
 
 }
