@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.springboot.entities.Cliente;
+import br.com.springboot.model.Cliente;
 
 @Repository
 public class ClienteDAO implements CRUD<Cliente, Long>{

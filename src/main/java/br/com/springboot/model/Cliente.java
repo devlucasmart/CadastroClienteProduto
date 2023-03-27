@@ -1,4 +1,4 @@
-package br.com.springboot.entities;
+package br.com.springboot.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -12,15 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(name = "cliente")
 public class Cliente implements Serializable {
@@ -35,7 +34,7 @@ public class Cliente implements Serializable {
 	private String cpf;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name = "data_nascimento", columnDefinition = "DATE")
-	private LocalDate dataDeNascimmento;
+	private LocalDate dataDeNascimento;
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@Column(length = 10)
@@ -58,7 +57,7 @@ public class Cliente implements Serializable {
 			cliente += "ID........." + this.id + "\n";
 			cliente += "Nome........." + this.nome + "\n";
 			cliente += "CPF........." + this.cpf + "\n";
-			cliente += "Data Nasc........." + this.dataDeNascimmento + "\n";
+			cliente += "Data Nasc........." + this.dataDeNascimento + "\n";
 			cliente += "Sexo........." + this.sexo.getDescricao() + "\n";
 			cliente += "Telefone........." + this.telefone + "\n";
 			cliente += "Celular........." + this.celular + "\n";

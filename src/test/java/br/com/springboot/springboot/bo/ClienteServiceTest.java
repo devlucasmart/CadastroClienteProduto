@@ -2,8 +2,8 @@ package br.com.springboot.springboot.bo;
 
 import br.com.springboot.services.ClienteService;
 import br.com.springboot.dao.ClienteDAO;
-import br.com.springboot.entities.Cliente;
-import br.com.springboot.entities.Sexo;
+import br.com.springboot.model.Cliente;
+import br.com.springboot.model.Sexo;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

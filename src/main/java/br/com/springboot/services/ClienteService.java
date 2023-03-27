@@ -2,7 +2,7 @@ package br.com.springboot.services;
 
 import br.com.springboot.dao.CRUD;
 import br.com.springboot.dao.ClienteDAO;
-import br.com.springboot.entities.Cliente;
+import br.com.springboot.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

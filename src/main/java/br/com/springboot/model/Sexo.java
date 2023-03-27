@@ -1,4 +1,4 @@
-package br.com.springboot.entities;
+package br.com.springboot.model;
 
 public enum Sexo {
 	MASCULINO("Masculino"),
