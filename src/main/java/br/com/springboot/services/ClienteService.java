@@ -6,7 +6,9 @@ import br.com.springboot.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+
 
 @Service
 public class ClienteService implements CRUD <Cliente, Long>{
@@ -20,9 +22,10 @@ public class ClienteService implements CRUD <Cliente, Long>{
 
     @Override
     public List<Cliente> lista() {
+
         return dao.lista();
     }
-
+    @Transactional
     @Override
     public void insere(Cliente cliente) {
         dao.insere(cliente);
@@ -37,14 +40,16 @@ public class ClienteService implements CRUD <Cliente, Long>{
 
     @Override
     public void remove(Cliente cliente) {
+
         dao.remove(cliente);
     }
-
+    @Transactional
     public void inativa(Cliente cliente) {
         cliente.setAtivo(false);
         dao.atualiza(cliente);
     }
 
+    @Transactional
     public void ativa(Cliente cliente){
         cliente.setAtivo(true);
         dao.atualiza(cliente);

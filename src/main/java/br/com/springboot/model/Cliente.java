@@ -16,7 +16,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
@@ -27,7 +26,7 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	@Column(nullable = false, length = 50)
 	private String nome;
 	@Column(length = 11)
@@ -45,7 +44,11 @@ public class Cliente implements Serializable {
 	private String email;
 	private boolean ativo;
 
+	public Cliente() {
+		this.ativo = true;
+	}
 	public Sexo getSexo(Sexo sexo) {
+
 		return sexo;
 	}
 

@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.springboot.model.Cliente;
+
 
 @Repository
 public class ClienteDAO implements CRUD<Cliente, Long>{
@@ -18,6 +20,7 @@ public class ClienteDAO implements CRUD<Cliente, Long>{
 
 	@Override
 	public Cliente pesquisaPeloId(Long id) {
+
 		return entityManager.find(Cliente.class, id);
 	}
 
@@ -26,6 +29,7 @@ public class ClienteDAO implements CRUD<Cliente, Long>{
 		Query query = entityManager.createQuery("Select c from Cliente c");
 		return (List<Cliente>) query.getResultList();
 	}
+
 
 	@Override
 	public void insere(Cliente cliente) {
