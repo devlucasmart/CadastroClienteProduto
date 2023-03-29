@@ -11,8 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 @Getter
 @Setter
@@ -27,20 +32,27 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@Column(nullable = false, length = 50)
+	@NotBlank(message = "informe o nome")
+	@Size(min = 3, max= 50)
 	private String nome;
-	@Column(length = 11)
+	@Column(length = 14)
+	@CPF(message = "CPF inválido")
 	private String cpf;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name = "data_nascimento", columnDefinition = "DATE")
+	@NotNull(message = "Informe a Data de Nascimento")
 	private LocalDate dataDeNascimento;
 	@Enumerated(EnumType.STRING)
+	@NotNull(message = "Informe o Sexo")
 	private Sexo sexo;
-	@Column(length = 10)
+	@Column(length = 14)
 	private String telefone;
-	@Column(length = 11)
+	@Column(length = 15)
 	private String celular;
 	@Column(length = 50)
+	@Email(message = "e-mail inválido")
 	private String email;
 	private boolean ativo;
 
