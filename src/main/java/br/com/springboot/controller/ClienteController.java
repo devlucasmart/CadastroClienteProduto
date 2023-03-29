@@ -32,10 +32,14 @@ public class ClienteController {
         if (result.hasErrors()) {
             return "/cliente/formulario";
         }
-        if (cliente.getId() == null)
+        if (cliente.getId() == null) {
                 clienteService.insere(cliente);
-        else
+                attr.addFlashAttribute("feedback", "Cliente Cadastrado com Sucesso");
+        }
+        else {
             clienteService.atualiza(cliente);
+            attr.addFlashAttribute("feedback", "Cliente Atualizado com Sucesso");
+        }
         return "redirect:/clientes";
 
     }
@@ -47,20 +51,36 @@ public class ClienteController {
     }
     @RequestMapping(value = "/edita/{id}", method = RequestMethod.GET)
     public ModelAndView edita(@PathVariable("id") Long id, ModelMap model) {
-        model.addAttribute("cliente", clienteService.pesquisaPeloId(id));
+        try {
+            model.addAttribute("cliente", clienteService.pesquisaPeloId(id));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         return new ModelAndView("/cliente/formulario", model);
     }
 
     @RequestMapping(value = "/inativa/{id}", method = RequestMethod.GET)
-    public String inativa(@PathVariable("id") Long id) {
-        Cliente cliente = clienteService.pesquisaPeloId(id);
-        clienteService.inativa(cliente);
+    public String inativa(@PathVariable("id") Long id, RedirectAttributes attr) {
+        System.out.println(id);
+        try{
+            Cliente cliente = clienteService.pesquisaPeloId(id);
+            clienteService.inativa(cliente);
+            attr.addFlashAttribute("feedback", "Cliente inativado com sucesso");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         return "redirect:/clientes";
     }
     @RequestMapping(value = "/ativa/{id}", method = RequestMethod.GET)
-    public String ativa(@PathVariable("id") Long id) {
-        Cliente cliente = clienteService.pesquisaPeloId(id);
-        clienteService.ativa(cliente);
+    public String ativa(@PathVariable("id") Long id, RedirectAttributes attr) {
+        System.out.println(id);
+        try{
+            Cliente cliente = clienteService.pesquisaPeloId(id);
+            clienteService.ativa(cliente);
+            attr.addFlashAttribute("feedback", "Cliente ativado com sucesso");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/clientes";
     }
 }

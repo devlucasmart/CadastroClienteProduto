@@ -32,6 +32,7 @@ public class ClienteService implements CRUD <Cliente, Long>{
 
     }
 
+    @Transactional
     @Override
     public void atualiza(Cliente cliente) {
         dao.atualiza(cliente);
