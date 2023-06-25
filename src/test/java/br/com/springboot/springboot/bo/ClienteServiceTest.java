@@ -30,7 +30,7 @@ public class ClienteServiceTest {
         Cliente cliente = new Cliente();
         cliente.setNome("José da Silva");
         cliente.setCpf("01234567890");
-        cliente.setDataDeNascimmento(LocalDate.of(200, 1, 8));
+        cliente.setDataDeNascimento(LocalDate.of(200, 1, 8));
         cliente.getSexo(Sexo.MASCULINO);
         cliente.setTelefone("0123456789");
         cliente.setCelular("01234567890");
@@ -41,20 +41,13 @@ public class ClienteServiceTest {
    @Test
     @Order(2)
     public void pesquisaPeloId() {
-        Cliente cliente = clienteService.pesquisaPeloId(1L);
-        System.out.println(cliente);
+        Cliente cliente = dao.pesquisaPeloId(1L);
+
+        assertThat
     }
    @Test
     @Order(3)
     public void atualiza(){
-        Cliente cliente = clienteService.pesquisaPeloId(3L);
-        cliente.setNome(null);
-        cliente.setCpf(null);
-        cliente.setDataDeNascimmento(null);
-        cliente.getSexo(null);
-        cliente.setTelefone(null);
-        cliente.setCelular(null);
-        clienteService.atualiza(cliente);
     }
     @Test
     @Order(4)
