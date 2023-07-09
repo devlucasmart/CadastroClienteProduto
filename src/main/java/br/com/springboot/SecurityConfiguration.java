@@ -39,7 +39,7 @@ public class SecurityConfiguration  {
     public InMemoryUserDetailsManager userDetailsService() {
 
         UserDetails user = User.builder()
-                .username("user")
+                .username("user@gmail.com")
                 .password(passwordEncoder().encode("12345"))
                 .roles("USUARIO")
                 .build();
